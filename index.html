@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café & Pub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&family=Lora&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('IMAGENS/Fundo.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: #fff;
+            line-height: 1.6;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            text-align: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        nav ul li a:hover {
+            color: #e7b65d;
+        }
+        .intro-box {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .intro-box h1 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .intro-box p {
+            font-size: 1.5rem;
+        }
+        .menu {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 3rem 1rem;
+        }
+        .menu h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+        .menu h3 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+        .card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: center;  /* Centralizando os preços */
+            margin-top: 10px;
+        }
+        .card ul li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            display: block;
+        }
+        .card ul li:last-child {
+            margin-bottom: 0;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 3rem 1rem;
+            text-align: center;
+            color: #fff;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .footer-content div {
+            max-width: 300px;
+            margin: 1rem;
+            text-align: left; /* Alinhando o texto à esquerda */
+        }
+        .footer-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .footer-content p, .footer-content ul {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .footer-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-content ul li {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .footer-content .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        .footer-content .social a {
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        .footer-content .social a:hover {
+            color: #e7b65d;
+        }
+        .about {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .about h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .about p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .intro-box h1 {
+                font-size: 2.2rem;
+            }
+            .intro-box p {
+                font-size: 1.2rem;
+            }
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+            nav ul {
+                padding: 0.5rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <div class="logo" aria-label="Logo do Café & Pub">Café & Pub</div>
+        <nav role="navigation" aria-label="Menu principal">
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="inicio">
+        <section class="intro-box">
+            <h1>Bem-vindo ao Café & Pub</h1>
+            <p>Sua pausa com sabor e estilo.</p>
+        </section>
+    </main>
+    <section class="menu" id="cardapio">
+        <h2>Nosso Cardápio</h2>
+
+        <h3>Bebidas Quentes</h3>
+        <div class="menu-items">
+            <!-- Cards de bebidas quentes -->
+            <div class="card">
+                <h4>Café do coador</h4>
+                <ul>
+                    <li>Pequeno: R$ 3,60</li>
+                    <li>Médio: R$ 7,20</li>
+                    <li>Duplo: R$ 7,50</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Café expresso</h4>
+                <ul>
+                    <li>Pequeno: R$ 5,80</li>
+                    <li>Médio: R$ 7,80</li>
+                    <li>Duplo: R$ 9,20</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Chocolate / Cappuccino</h4>
+                <ul>
+                    <li>Pequeno: R$ 6,00–6,90</li>
+                    <li>Médio: R$ 9,00–9,60</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Chocolate c/ Chantilly</h4>
+                <ul><li>R$ 15,90</li></ul>
+            </div>
+            <div class="card">
+                <h4>Cappuccino c/ Chantilly</h4>
+                <ul><li>R$ 16,90</li></ul>
+            </div>
+            <div class="card">
+                <h4>Café c/ leite e Chantilly</h4>
+                <ul><li>R$ 13,90</li></ul>
+            </div>
+        </div>
+
+        <h3>Bebidas Frias</h3>
+        <div class="menu-items">
+            <!-- Cards de bebidas frias -->
+            <div class="card">
+                <h4>Açaí batido</h4>
+                <ul>
+                    <li>Com água: R$ 12,50</li>
+                    <li>Com leite ou laranja: R$ 14,50</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Vitamina Mista</h4>
+                <ul>
+                    <li>R$ 13,50</li>
+                    <li>c/ Suco de Laranja: R$ 16,90</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Chocolate / Cappuccino Gelado</h4>
+                <ul>
+                    <li>Chocolate batido: R$ 14,90</li>
+                    <li>Cappuccino gelado: R$ 16,90</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Salgados</h3>
+        <div class="menu-items">
+            <div class="card"><h4>Folhado de presunto e queijo</h4><ul><li>R$ 6,90</li></ul></div>
+            <div class="card"><h4>Folhado de queijo</h4><ul><li>R$ 5,90</li></ul></div>
+            <div class="card"><h4>Mini Pizza</h4><ul><li>R$ 8,90</li></ul></div>
+        </div>
+
+        <h3>Bolos e Doces</h3>
+        <div class="menu-items">
+            <div class="card">
+                <h4>Bolo de Cenoura</h4>
+                <ul>
+                    <li>Pequeno: R$ 5,00</li>
+                    <li>Médio: R$ 7,00</li>
+                    <li>Grande: R$ 10,00</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Bolo de Prestígio</h4>
+                <ul>
+                    <li>Pequeno: R$ 5,50</li>
+                    <li>Médio: R$ 7,50</li>
+                    <li>Grande: R$ 10,50</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Bolo de Aipim</h4>
+                <ul>
+                    <li>Pequeno: R$ 6,00</li>
+                    <li>Médio: R$ 8,00</li>
+                    <li>Grande: R$ 11,00</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Bolo de Pão de Ló</h4>
+                <ul>
+                    <li>Pequeno: R$ 4,50</li>
+                    <li>Médio: R$ 6,00</li>
+                    <li>Grande: R$ 8,00</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+    <style>
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content div {
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-content div:nth-child(2) {
+            max-width: 400px;
+        }
+
+        .footer-content h4 {
+            margin-bottom: 10px;
+        }
+
+        .footer-content div:nth-child(2) p {
+            display: inline;
+            margin-right: 8px;
+        }
+
+        .footer-content div:nth-child(2) p:last-child {
+            margin-right: 0;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .footer-copy {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+    <div class="footer-content">
+        <div>
+            <h4>Sobre o Café & Pub</h4>
+            <p>Fundado em 2025, o Café & Pub nasceu da paixão por cafés de qualidade e um ambiente acolhedor. Nosso objetivo é oferecer a melhor experiência com bebidas e salgados frescos, além de um espaço agradável para suas pausas do dia.</p>
+        </div>
+        <div>
+            <h4>Contato</h4>
+            <p>Fique à vontade para entrar em contato conosco para dúvidas ou sugestões. Estamos sempre prontos para atendê-lo.</p>
+            <p>Email: contato@cafeepub.com,</p>
+            <p>Telefone: (11) 1234-5678,</p>
+            <p>Endereço: Rua Exemplo, 123, Osasco - SP</p>
+        </div>
+        <div>
+            <h4>Redes Sociais</h4>
+            <div class="social">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copy">
+        © 2025 Café & Pub - Todos os direitos reservados
+    </div>
+</footer>
