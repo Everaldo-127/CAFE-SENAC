@@ -1,2 +1,2 @@
 # Projeto CAFÉ - Senac
-Página em CSS e HTML de um Café &amp; PUB .
+Página em CSS interno e HTML de um Café &amp; PUB .
